@@ -19,7 +19,7 @@ sleep 1s;
 ###GET ETC GROUP
 sshpass -p $PASSWDR ssh -o StrictHostKeyChecking=no $USERIDR@$HOSTR 'getent group' > $PATHDIR$HOSTR"-group.txt"  && cat $PATHDIR$HOSTR"-group.txt" | awk -F":" '{ print $1 "," $2 "," $3 "," $4 "," "'"$HOSTR"'" }' > $PATHDIR$HOSTR"-group.csv";
 printf "Export ETC-GROUP Successfull\n";
-
+sleep 1s;
 ###GET SUDOERS
 sshpass -p $PASSWDR ssh -o StrictHostKeyChecking=no $USERIDR@$HOSTR 'cat /etc/sudoers' > $PATHDIR$HOSTR"-sudoers.txt" && cat $PATHDIR$HOSTR"-sudoers.txt" | egrep -v "^\s*(#|$)" > $PATHDIR$HOSTR"-sudoers.csv";
 printf "Export ETC-SUDOERS Successfull\n";
